@@ -1,0 +1,23 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Каталог профессий{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <h1>Каталог профессий</h1>
+        <p>Чтобы задать любые вопросы о профессиях, нажмите на помощника в углу страницы.</p>
+        {% if profs %}
+            {% for el in profs %}
+                <div class="alert alert-dark">
+                    <h3>{{ el.title }}</h3>
+                    <p>{{ el.anons }}</p>
+                    <a href="{% url 'newapp-detail' el.id %}" class="btn btn-primary">Подробнее</a>
+                </div>
+            {% endfor %}
+        {% else %}
+        <p>Список пуст</p>
+        {% endif %}
+
+        {# comments #}
+    </div>
+{% endblock %}
